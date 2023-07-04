@@ -3,8 +3,8 @@
 // 82 -> 10
 // 9012 -> 12
 
-Console.WriteLine("Введите число N");
-int N = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Введите положительное число N");
+//int N = Convert.ToInt32(Console.ReadLine());
 
 int countNums(int i)
 {
@@ -32,15 +32,22 @@ int[] createArray(int number, int size)
 }
 
 int sumNumbers(int[] array)
-{   
+{
     int sum = 0;
-    for(int i = 0; i < array.Length; i++)
+    for (int i = 0; i < array.Length; i++)
     {
         sum += array[i];
     }
     return sum;
 }
 
-Console.WriteLine($"Введенное число состоит из {countNums(N)} цифр");
-Console.WriteLine($"Массив: [{string.Join(";", createArray(N, countNums(N)))}]");
-Console.WriteLine($"Сумма цифр в веденном числе {N} = {sumNumbers(createArray(N, countNums(N)))}");
+if (int.TryParse(Console.ReadLine(), out int N) && N > 0)
+{
+    Console.WriteLine($"Введенное число состоит из {countNums(N)} цифр");
+    Console.WriteLine($"Массив: [{string.Join(";", createArray(N, countNums(N)))}]");
+    Console.WriteLine($"Сумма цифр в веденном числе {N} = {sumNumbers(createArray(N, countNums(N)))}");
+}
+else
+{
+    Console.WriteLine("Введено некорректное число.");
+}
